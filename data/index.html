@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distiller Controller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Distiller Control Panel</h1>
+        
+        <div class="sensors-panel">
+            <h2>Sensor Readings</h2>
+            <div class="sensor-grid">
+                <div class="sensor-item">
+                    <label>Cube Temp:</label>
+                    <span id="tempCube">0.0</span> °C
+                </div>
+                <div class="sensor-item">
+                    <label>Column Temp:</label>
+                    <span id="tempColumn">0.0</span> °C
+                </div>
+                <div class="sensor-item">
+                    <label>Tsa Temp:</label>
+                    <span id="tempTsa">0.0</span> °C
+                </div>
+                <div class="sensor-item">
+                    <label>Coolant Temp:</label>
+                    <span id="tempCoolant">0.0</span> °C
+                </div>
+                <div class="sensor-item">
+                    <label>Pressure:</label>
+                    <span id="pressure">0</span> Pa
+                </div>
+                <div class="sensor-item">
+                    <label>Flow Rate:</label>
+                    <span id="flow">0.0</span> ml/min
+                </div>
+                <div class="sensor-item">
+                    <label>Strength:</label>
+                    <span id="strength">0.0</span> %
+                </div>
+                <div class="sensor-item">
+                    <label>Leak:</label>
+                    <span id="leak">No</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="control-panel">
+            <h2>System Control</h2>
+            <div class="mode-selector">
+                <button class="btn" data-mode="0">Idle</button>
+                <button class="btn" data-mode="1">Distillation Wash</button>
+                <button class="btn" data-mode="2">Rectification</button>
+                <button class="btn" data-mode="5">Distillation Auto</button>
+                <button class="btn" data-mode="6">Manual Mode</button>
+                <button class="btn emergency">Emergency Stop</button>
+            </div>
+            
+            <div class="calibration">
+                <h3>Calibration</h3>
+                <button class="btn calibrate" data-type="heads">Calibrate Heads</button>
+                <button class="btn calibrate" data-type="body">Calibrate Body</button>
+            </div>
+            
+            <div class="manual-control" id="manualControl">
+                <h3>Manual Adjustment</h3>
+                <label>Servo Angle: <span id="currentAngle">0</span>°</label>
+                <input type="range" id="angleSlider" min="0" max="89" value="0">
+                <button class="btn" id="applyAngle">Apply</button>
+            </div>
+        </div>
+    </div>
+    <div class="calculator-panel">
+  <h2>Batch Calculator</h2>
+  
+  <div class="input-group">
+    <label for="volume">Volume (liters):</label>
+    <input type="number" id="volume" min="0.1" step="0.1" value="10">
+  </div>
+  
+  <div class="input-group">
+    <label for="abv">ABV (%):</label>
+    <input type="number" id="abv" min="1" max="100" step="0.1" value="12">
+  </div>
+  
+  <button class="btn" id="calculateBtn">Calculate</button>
+  
+  <div class="results">
+    <h3>Estimated Output:</h3>
+    <p>Total Alcohol: <span id="totalAlcohol">0.0</span> L</p>
+    <div class="fractions">
+      <div>
+        <h4>Heads</h4>
+        <p><span id="headsVolume">0.0</span> L (<span id="headsPercent">0</span>%)</p>
+      </div>
+      <div>
+        <h4>Body</h4>
+        <p><span id="bodyVolume">0.0</span> L (<span id="bodyPercent">0</span>%)</p>
+      </div>
+      <div>
+        <h4>Tails</h4>
+        <p><span id="tailsVolume">0.0</span> L (<span id="tailsPercent">0</span>%)</p>
+      </div>
+    </div>
+    <p>Pure Alcohol: <span id="pureAlcohol">0.0</span> L</p>
+  </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
